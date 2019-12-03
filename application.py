@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session, redirect, url_for
 from flask_session import Session
 from tempfile import mkdtemp
 
@@ -17,6 +17,12 @@ def index():
 		session["turn"] = "x"
 
 	return render_template("index.html", game=session["board"], turn=session["turn"])
+
+@app.route("/reset")
+def reset():
+
+	session.clear()
+	return redirect(url_for("index"))
 
 @app.route("/play/<int:row>/<int:col>")
 def play(row, col):
@@ -49,7 +55,7 @@ def play(row, col):
 		session["turn"] = "o"
 	else:
 		session["turn"] = "x"
-	return render_template("index.html", game=session["board"], turn=session["turn"])
+	return redirect(url_for("index"))
 
 if __name__=='__main__':
 	app.run(debug=True)
