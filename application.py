@@ -12,9 +12,9 @@ Session(app)
 @app.route("/")
 def index():
 	
-	session.clear()
-	session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
-	session["turn"] = "x"
+	if "board" not in session:
+		session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
+		session["turn"] = "x"
 
 	return render_template("index.html", game=session["board"], turn=session["turn"])
 
