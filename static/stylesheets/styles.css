@@ -1,0 +1,12 @@
+table {
+  border-collapse: collapse; }
+  table td {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 30px; }
+    table td a {
+      font-size: 15px; }
+
+/*# sourceMappingURL=styles.css.map */
